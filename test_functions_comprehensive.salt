@@ -1,0 +1,142 @@
+# Test 1: Basic function with int parameters
+make function add takes int a, int b gives int
+{
+    give a + b
+}
+
+# Test 2: Function with string parameters
+make function greet takes string name gives string
+{
+    make string message "Hello " + name
+    give message
+}
+
+# Test 3: Function with mixed parameter types
+make function describe takes string name, int age gives string
+{
+    make string result name + " is " + age + " years old"
+    give result
+}
+
+# Test 4: Function with no parameters
+make function get_ten gives int
+{
+    give 10
+}
+
+# Test 5: Function with boolean parameters
+make function is_adult takes int age gives bool
+{
+    if age gteq 18
+    {
+        give TRUE
+    }
+    else
+    {
+        give FALSE
+    }
+}
+
+# Test 6: Function with double parameters
+make function average takes double a, double b gives double
+{
+    make double result (a + b) / 2
+    give result
+}
+
+# Test 7: Nested function calls
+make function multiply takes int a, int b gives int
+{
+    give a * b
+}
+
+make function square takes int x gives int
+{
+    give multiply(x, x)
+}
+
+# Test 8: Function with multiple statements
+make function factorial takes int n gives int
+{
+    make int result 1
+    make int i 1
+    while i lteq n
+    {
+        make result result * i
+        make i i + 1
+    }
+    give result
+}
+
+# Test 9: Function with early return
+make function absolute takes int x gives int
+{
+    if x lt 0
+    {
+        give -x
+    }
+    give x
+}
+
+# Test 10: Function with skip and end
+make function find_first_positive takes int a, int b, int c gives int
+{
+    if a gt 0
+    {
+        give a
+    }
+    if b gt 0
+    {
+        give b
+    }
+    if c gt 0
+    {
+        give c
+    }
+    give -1
+}
+
+# Now test all the functions
+print "=== Testing Basic Functions ==="
+make int sum add(5, 3)
+print "5 + 3 = " sum
+
+make string greeting greet("Alice")
+print greeting
+
+make string description describe("Bob", 25)
+print description
+
+make int ten get_ten()
+print "get_ten() = " ten
+
+print "=== Testing Boolean Functions ==="
+make bool adult1 is_adult(20)
+make bool adult2 is_adult(15)
+print "20 is adult: " adult1
+print "15 is adult: " adult2
+
+print "=== Testing Double Functions ==="
+make double avg average(10.5, 15.5)
+print "Average of 10.5 and 15.5 = " avg
+
+print "=== Testing Nested Functions ==="
+make int squared square(4)
+print "4 squared = " squared
+
+print "=== Testing Complex Functions ==="
+make int fact5 factorial(5)
+print "5! = " fact5
+
+make int abs1 absolute(-7)
+make int abs2 absolute(3)
+print "|-7| = " abs1
+print "|3| = " abs2
+
+print "=== Testing Control Flow in Functions ==="
+make int pos1 find_first_positive(-1, 5, -3)
+make int pos2 find_first_positive(-1, -2, -3)
+print "First positive in [-1, 5, -3]: " pos1
+print "First positive in [-1, -2, -3]: " pos2
+
+print "=== All function tests completed! ===" 

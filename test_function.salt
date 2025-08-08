@@ -1,0 +1,10 @@
+make function add_numbers takes int a, int b gives int
+{
+    make int result a + b
+    give result
+}
+
+make int x 5
+make int y 3
+make int sum add_numbers(x, y)
+print "Sum is:" sum 

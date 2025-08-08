@@ -1,0 +1,51 @@
+# Count-based iteration
+loop 5 times
+{
+    print "Hello"
+}
+
+# Range with variable
+loop x from 1 to 10
+{
+    print "Number:" x
+}
+
+# Step increments
+loop i from 0 to 100 by 10
+{
+    print i
+}
+
+
+# Simple while loop using existing comparison operators
+while x lt 10
+{
+    print x
+    make x x + 1
+}
+
+
+
+# Exit early
+
+make int x 1
+while TRUE 
+{
+    if x eq 3
+    {
+        end
+    }
+    make x x + 1
+}
+
+# Skip iteration
+loop i from 1 to 10
+{
+    if i eq 5
+    {
+        skip 
+    }
+    print i
+}
+
+'loop', 'while', 'from', 'to', 'by' 

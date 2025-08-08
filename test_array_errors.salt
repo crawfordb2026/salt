@@ -1,0 +1,35 @@
+# Test array error handling
+
+# Test out of bounds access
+make int array test[3]
+make test[0] 1
+make test[1] 2
+make test[2] 3
+
+# This should cause an error: make test[3] 4
+# This should cause an error: make test[-1] 0
+
+# Test accessing undefined array
+# This should cause an error: make undefined[0] 5
+
+# Test invalid array size
+# This should cause an error: make int array invalid[0]
+# This should cause an error: make int array invalid[-5]
+
+# Test type mismatch
+make int array ints[2]
+make string array strings[2]
+
+# This should work fine:
+make ints[0] 10
+make strings[0] "hello"
+
+# Test array with expressions in size
+make int size 2
+make int array expr[size]
+make expr[0] 100
+make expr[1] 200
+
+print "Expression-based array size works:"
+print "expr[0] = " expr[0]
+print "expr[1] = " expr[1] 

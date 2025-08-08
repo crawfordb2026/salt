@@ -1,0 +1,385 @@
+SALT PROGRAMMING LANGUAGE REFERENCE
+====================================
+
+OVERVIEW
+--------
+Salt is a simple, statically-typed programming language with Python-like syntax.
+The language is designed to be easy to learn and use for basic programming tasks.
+
+DATA TYPES
+----------
+- int       : Integer numbers (e.g., 5, -10, 0)
+- double    : Floating-point numbers (e.g., 3.14, -2.5)
+- string    : Text strings (e.g., "hello", "world")
+- bool      : Boolean values (TRUE or FALSE)
+
+ARRAYS
+------
+Arrays are fixed-size collections of elements of the same type.
+
+Array Declaration:
+Syntax: make <type> array <name>[<size>]
+
+Examples:
+make int array numbers[5]      # Array of 5 integers
+make string array names[3]     # Array of 3 strings
+make double array scores[10]   # Array of 10 doubles
+make bool array flags[4]       # Array of 4 booleans
+
+Array Element Assignment:
+Syntax: make <array_name>[<index>] <value>
+
+Examples:
+make numbers[0] 10            # Set first element to 10
+make names[1] "Alice"         # Set second element to "Alice"
+make scores[3] 95.5           # Set fourth element to 95.5
+make flags[2] TRUE           # Set third element to TRUE
+
+Array Element Access:
+Arrays can be accessed in expressions using square bracket notation:
+numbers[0]                    # Access first element
+names[2]                     # Access third element
+
+Array elements can be used in expressions:
+make int sum numbers[0] + numbers[1]
+print "Name:" names[0]
+if scores[1] gt 90 { print "High score!" }
+
+Dynamic Size:
+Array size can be determined by a variable or expression:
+make int size 5
+make int array dynamic[size]
+
+Array Features:
+- Zero-based indexing (first element is at index 0)
+- Bounds checking (error if accessing beyond array size)
+- Type safety (elements must match array type)
+- Initial values (int: 0, double: 0.0, string: "", bool: FALSE)
+
+Common Array Operations:
+loop i from 0 to 4
+{
+    make numbers[i] i * 10    # Fill array with values
+    print numbers[i]          # Print array elements
+}
+
+Array Limitations:
+- Size must be specified at creation
+- Size cannot be changed after creation
+- No built-in array operations (sorting, searching)
+- No multi-dimensional arrays
+
+VARIABLE DECLARATION
+-------------------
+Syntax: make <type> <variable_name> <value>
+
+Examples:
+make int x 5
+make string name "Alice"
+make bool flag TRUE
+make double pi 3.14159
+
+VARIABLE ASSIGNMENT
+------------------
+Syntax: make <variable_name> <new_value>
+
+Examples:
+make x 10
+make name "Bob"
+make flag FALSE
+
+Note: Variables must be declared before they can be assigned new values.
+The new value must be compatible with the variable's original type.
+
+ARITHMETIC OPERATIONS
+--------------------
+Supported operators: +, -, *, /, %
+
+Examples:
+make int result x + 5
+make double area width * height
+make int difference a - b
+make double ratio total / count
+make int remainder 17 % 5
+
+COMPARISON OPERATIONS
+--------------------
+Word-based operators:
+- lt    : less than (<)
+- gt    : greater than (>)
+- lteq  : less than or equal (<=)
+- gteq  : greater than or equal (>=)
+- eq    : equal (==)
+- neq   : not equal (!=)
+
+Examples:
+x gt 5
+name eq "Alice"
+score lteq 100
+
+LOGICAL OPERATIONS
+-----------------
+- and   : logical AND
+- or    : logical OR
+- not   : logical NOT
+
+Examples:
+x gt 5 and y lt 10
+flag or other_flag
+not finished
+
+PRINT STATEMENTS
+---------------
+Syntax: print <expression1> <expression2> ...
+
+The print statement can take multiple arguments, which are automatically
+concatenated with spaces.
+
+Examples:
+print "Hello World"
+print x
+print "The value is:" x
+print name " is " age " years old"
+
+IF STATEMENTS
+-------------
+Syntax:
+if <condition>
+{
+    <statements>
+}
+else
+{
+    <statements>
+}
+
+The condition must be a boolean expression (comparison or logical operation).
+Code inside the braces executes only if the condition is true.
+The else block is optional and executes when the condition is false.
+
+Examples:
+if x gt 5
+{
+    print "x is greater than 5"
+}
+
+if name eq "Alice" and age gteq 18
+{
+    print "Hello adult Alice"
+    make string status "verified"
+}
+else
+{
+    print "Access denied"
+}
+
+LOOPS
+-----
+Salt supports two types of loops: count-based loops and while loops.
+
+Count-based loops:
+Syntax: loop <count> times
+        loop <variable> from <start> to <end> [by <step>]
+
+Examples:
+loop 5 times
+{
+    print "Hello"
+}
+
+loop i from 1 to 10
+{
+    print "Number:" i
+}
+
+loop i from 0 to 100 by 10
+{
+    print i
+}
+
+While loops:
+Syntax: while <condition>
+        {
+            <statements>
+        }
+
+Examples:
+while x lt 10
+{
+    print x
+    make x x + 1
+}
+
+while TRUE
+{
+    if x eq 5
+    {
+        end
+    }
+    make x x + 1
+}
+
+LOOP CONTROL
+-----------
+- skip   : Skip the current iteration and continue with the next
+- end    : Exit the current loop entirely
+
+Examples:
+loop i from 1 to 10
+{
+    if i eq 5
+    {
+        skip
+    }
+    print i
+}
+
+while TRUE
+{
+    if x eq 3
+    {
+        end
+    }
+    make x x + 1
+}
+
+FUNCTIONS
+---------
+Functions allow you to define reusable blocks of code.
+
+Syntax:
+make function <function_name> takes <type1> <param1>, <type2> <param2> ... gives <return_type>
+{
+    <statements>
+    give <expression>
+}
+
+Examples:
+make function add takes int a, int b gives int
+{
+    give a + b
+}
+
+make function greet takes string name gives string
+{
+    make string message "Hello " + name
+    give message
+}
+
+make function is_adult takes int age gives bool
+{
+    if age gteq 18
+    {
+        give TRUE
+    }
+    else
+    {
+        give FALSE
+    }
+}
+
+Function calls:
+Syntax: <function_name>(<arg1>, <arg2>, ...)
+
+Examples:
+make int result add(5, 3)
+make string greeting greet("Alice")
+make bool adult is_adult(20)
+
+UNARY OPERATIONS
+---------------
+- -<expression> : Negation (for numbers)
+
+Examples:
+make int negative -5
+make int result -x
+
+COMMENTS
+--------
+Use # for single-line comments
+# This is a comment
+
+PROGRAM STRUCTURE
+----------------
+- Programs are executed line by line
+- Statements can span multiple lines (especially if statements with braces)
+- Empty lines are ignored
+- Comments (lines starting with #) are ignored
+- Functions must be defined before they can be called
+
+EXAMPLE PROGRAM
+--------------
+# Simple Salt program demonstrating various features
+make int x 10
+make int y 5
+make string message "Comparison result"
+
+# Function definition
+make function max takes int a, int b gives int
+{
+    if a gt b
+    {
+        give a
+    }
+    else
+    {
+        give b
+    }
+}
+
+# Loop demonstration
+loop i from 1 to 5
+{
+    if i eq 3
+    {
+        skip
+    }
+    print "Loop iteration:" i
+}
+
+# Function call
+make int maximum max(x, y)
+print "Maximum value is:" maximum
+
+if x gt y
+{
+    print message ": x is greater than y"
+    print "Values: x =" x ", y =" y
+}
+else
+{
+    print message ": y is greater than or equal to x"
+}
+
+print "Program finished"
+
+RUNNING PROGRAMS
+---------------
+Use the quiet runner for clean output:
+python3 run_quiet.py <filename.salt>
+
+Use the verbose runner for debugging:
+python3 run_file.py <filename.salt>
+
+ERROR HANDLING
+--------------
+Common errors:
+- Using undefined variables
+- Type mismatches in assignments
+- Missing braces in if statements or loops
+- Invalid syntax in expressions
+- Calling undefined functions
+- Incorrect number of function arguments
+- Division by zero
+- Modulo by zero
+
+Array-specific errors:
+- Array index out of bounds
+- Invalid array size (negative or zero)
+- Using undefined arrays
+- Type mismatch in array assignments
+- Using non-integer array indices
+- Missing array size in declaration
+- Missing brackets in array access
+
+The interpreter will show error messages to help debug issues. 

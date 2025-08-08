@@ -1,0 +1,11 @@
+make int x 5
+loop x from 1 to 10
+{
+    if x eq 3
+    {
+        print "three"
+        skip
+        print "NOOO"
+    }
+    print x
+}

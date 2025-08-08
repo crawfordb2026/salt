@@ -1,0 +1,159 @@
+# Test edge cases and error conditions for functions
+
+# Test 1: Function with zero parameters (should work)
+make function get_pi gives double
+{
+    give 3.14159
+}
+
+# Test 2: Function with many parameters
+make function sum_five takes int a, int b, int c, int d, int e gives int
+{
+    give a + b + c + d + e
+}
+
+# Test 3: Function that uses variables from outer scope
+make int global_var 42
+
+make function use_global gives int
+{
+    give global_var
+}
+
+# Test 4: Function that modifies global variables
+make int counter 0
+
+make function increment_counter gives int
+{
+    make counter counter + 1
+    give counter
+}
+
+# Test 5: Function with complex expressions as arguments
+make function complex_args takes int x, int y gives int
+{
+    give x * y + 10
+}
+
+# Test 6: Function that returns different types based on condition
+make function conditional_return takes bool flag gives int
+{
+    if flag
+    {
+        give 100
+    }
+    else
+    {
+        give 200
+    }
+}
+
+# Test 7: Function with nested if statements
+make function nested_logic takes int x gives string
+{
+    if x gt 10
+    {
+        if x gt 20
+        {
+            give "very large"
+        }
+        else
+        {
+            give "large"
+        }
+    }
+    else
+    {
+        if x gt 0
+        {
+            give "small"
+        }
+        else
+        {
+            give "negative"
+        }
+    }
+}
+
+# Test 8: Function with loops and control flow
+make function count_evens takes int start, int end_val gives int
+{
+    make int count 0
+    make int i start
+    while i lteq end_val
+    {
+        if i % 2 eq 0
+        {
+            make count count + 1
+        }
+        make i i + 1
+    }
+    give count
+}
+
+# Test 9: Function that calls itself (recursion test)
+make function recursive_factorial takes int n gives int
+{
+    if n lteq 1
+    {
+        give 1
+    }
+    else
+    {
+        make int result n * recursive_factorial(n - 1)
+        give result
+    }
+}
+
+# Test 10: Function with string concatenation
+make function build_name takes string first, string last gives string
+{
+    make string full_name first + " " + last
+    give full_name
+}
+
+# Now run the tests
+print "=== Testing Edge Cases ==="
+
+make double pi get_pi()
+print "Pi = " pi
+
+make int big_sum sum_five(1, 2, 3, 4, 5)
+print "Sum of 1,2,3,4,5 = " big_sum
+
+make int global_val use_global()
+print "Global var = " global_val
+
+make int count1 increment_counter()
+make int count2 increment_counter()
+print "Counter after 2 increments: " count2
+
+make int complex_result complex_args(5, 3)
+print "Complex args result: " complex_result
+
+make bool flag1 TRUE
+make bool flag2 FALSE
+make int result1 conditional_return(flag1)
+make int result2 conditional_return(flag2)
+print "Conditional return TRUE: " result1
+print "Conditional return FALSE: " result2
+
+make string size1 nested_logic(25)
+make string size2 nested_logic(15)
+make string size3 nested_logic(5)
+make string size4 nested_logic(-5)
+print "25 is " size1
+print "15 is " size2
+print "5 is " size3
+print "-5 is " size4
+
+make int evens count_evens(1, 10)
+print "Even numbers from 1 to 10: " evens
+
+make int rec_fact recursive_factorial(5)
+print "5! (recursive) = " rec_fact
+
+make string full_name build_name("John", "Doe")
+print "Full name: " full_name
+
+print "=== All edge case tests completed! ===" 

@@ -1,0 +1,10 @@
+make int array x[10]
+
+make int       x 10
+
+
+make x[3] 10
+
+make x    10
+
+

@@ -1,0 +1,83 @@
+# Test error conditions for functions
+# These should all produce appropriate error messages
+
+# Test 1: Call undefined function
+print "Testing undefined function call..."
+make int result undefined_function(5)
+
+# Test 2: Wrong number of arguments (too few)
+make function test_func takes int a, int b gives int
+{
+    give a + b
+}
+
+print "Testing too few arguments..."
+make int result test_func(5)
+
+# Test 3: Wrong number of arguments (too many)
+print "Testing too many arguments..."
+make int result test_func(5, 3, 7)
+
+# Test 4: Function with no parameters called with arguments
+make function no_params gives int
+{
+    give 42
+}
+
+print "Testing no-param function called with args..."
+make int result no_params(5, 3)
+
+# Test 5: Function with parameters called with no arguments
+make function has_params takes int x gives int
+{
+    give x * 2
+}
+
+print "Testing param function called with no args..."
+make int result has_params()
+
+# Test 6: Type mismatch in function call
+make function string_func takes string s gives string
+{
+    give s + " world"
+}
+
+print "Testing type mismatch..."
+make string result string_func(42)
+
+# Test 7: Recursive function that might cause stack overflow
+make function infinite_recursion takes int n gives int
+{
+    give infinite_recursion(n + 1)
+}
+
+print "Testing infinite recursion..."
+make int result infinite_recursion(1)
+
+# Test 8: Function with invalid syntax (missing give)
+make function bad_function takes int x gives int
+{
+    make int result x * 2
+    # Missing give statement
+}
+
+print "Testing function without give statement..."
+make int result bad_function(5)
+
+# Test 9: Function with invalid parameter name
+make function invalid_param takes int 123 gives int
+{
+    give 123
+}
+
+print "Testing invalid parameter name..."
+make int result invalid_param(5)
+
+# Test 10: Function with invalid return type
+make function invalid_return takes int x gives invalid_type
+{
+    give x
+}
+
+print "Testing invalid return type..."
+make int result invalid_return(5) 

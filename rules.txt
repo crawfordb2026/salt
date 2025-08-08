@@ -1,0 +1,7 @@
+make int x 5
+make x 10
+
+if x gt y
+{
+    print x " is greater than " y
+}

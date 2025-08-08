@@ -1,0 +1,96 @@
+# Comprehensive Array Example in Salt
+
+# Declare arrays of different types
+make int array numbers[5]
+make string array names[3]
+make double array scores[4]
+
+# Initialize arrays with values
+make numbers[0] 10
+make numbers[1] 20
+make numbers[2] 30
+make numbers[3] 40
+make numbers[4] 50
+
+make names[0] "Alice"
+make names[1] "Bob"
+make names[2] "Charlie"
+
+make scores[0] 95.5
+make scores[1] 87.2
+make scores[2] 92.8
+make scores[3] 78.9
+
+# Print all array elements
+print "Numbers array:"
+make int i 0
+loop i from 0 to 4
+{
+    print "numbers[" i "] = " numbers[i]
+}
+
+print "Names array:"
+make int j 0
+loop j from 0 to 2
+{
+    print "names[" j "] = " names[j]
+}
+
+print "Scores array:"
+make int k 0
+loop k from 0 to 3
+{
+    print "scores[" k "] = " scores[k]
+}
+
+# Calculate sum of numbers array
+make int sum 0
+make int m 0
+loop m from 0 to 4
+{
+    make sum sum + numbers[m]
+}
+print "Sum of all numbers: " sum
+
+# Calculate average score
+make double total 0.0
+make int n 0
+loop n from 0 to 3
+{
+    make total total + scores[n]
+}
+make double average total / 4.0
+print "Average score: " average
+
+# Find highest score
+make double highest scores[0]
+make int p 1
+loop p from 1 to 3
+{
+    if scores[p] gt highest
+    {
+        make highest scores[p]
+    }
+}
+print "Highest score: " highest
+
+# Array with dynamic size
+make int size 3
+make int array dynamic[size]
+make dynamic[0] 100
+make dynamic[1] 200
+make dynamic[2] 300
+
+print "Dynamic array:"
+make int q 0
+loop q from 0 to 2
+{
+    print "dynamic[" q "] = " dynamic[q]
+}
+
+# Array operations with variables
+make int index 1
+print "Element at index " index ": " numbers[index]
+
+make int product numbers[0] * numbers[1]
+print "Product of first two numbers: " product 

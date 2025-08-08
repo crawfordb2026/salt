@@ -1,0 +1,14 @@
+add to salt keywords
+
+add to statement starters
+
+
+
+# Function definition
+make function add_numbers takes int a, int b gives int
+{
+    make int result a + b
+    give result
+}
+
+'fuction', 'takes', 'gives', 'give'

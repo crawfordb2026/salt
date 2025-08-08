@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/mode/simple.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav-container">
+            <h1>🧂 Salt</h1>
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="showSection('docs')">📚 Documentation</button>
+                <button class="nav-btn" onclick="showSection('ide')">💻 Web IDE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Documentation Section -->
+    <div id="docs" class="section active">
+        <div class="container">
+            <div class="doc-section">
+                <h2>Welcome to Salt</h2>
+                <p>🧂 <strong>Salt</strong> is a beginner-friendly programming language that combines the simplicity of Python with the safety of static typing. Perfect for learning programming fundamentals, Salt uses clear, readable keywords and explicit type declarations to help you understand what your code is doing.</p>
+                
+                <p><strong>Why Salt?</strong> Unlike complex languages that overwhelm beginners, Salt focuses on core programming concepts with intuitive syntax. Whether you're writing your first program or teaching programming concepts, Salt's straightforward approach makes coding accessible and enjoyable.</p>
+                
+                <p><strong>Key Features:</strong> Static type checking prevents errors, clear keywords make code self-documenting, and comprehensive error messages help you learn from mistakes. Jump into the Web IDE to start coding immediately!</p>
+            </div>
+
+            <div class="doc-section">
+                <h2>Data Types</h2>
+                <ul class="feature-list">
+                    <li><span class="type-highlight">int</span> - Integer numbers (e.g., 5, -10, 0)</li>
+                    <li><span class="type-highlight">double</span> - Floating-point numbers (e.g., 3.14, -2.5)</li>
+                    <li><span class="type-highlight">string</span> - Text strings (e.g., "hello", "world")</li>
+                    <li><span class="type-highlight">bool</span> - Boolean values (TRUE or FALSE)</li>
+                </ul>
+            </div>
+
+            <div class="doc-section">
+                <h2>Variable Declaration & Assignment</h2>
+                <h3>Declaration</h3>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">make</span> <span class="type-highlight">int</span> x 5<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">string</span> name "Alice"<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">bool</span> flag TRUE</code>
+                </div>
+                
+                <h3>Assignment</h3>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">make</span> x 10<br>
+<span class="keyword-highlight">make</span> name "Bob"<br>
+<span class="keyword-highlight">make</span> flag FALSE</code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Arrays</h2>
+                <h3>Declaration</h3>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">make</span> <span class="type-highlight">int</span> <span class="keyword-highlight">array</span> numbers[5]<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">string</span> <span class="keyword-highlight">array</span> names[3]</code>
+                </div>
+                
+                <h3>Assignment & Access</h3>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">make</span> numbers[0] <span class="number-highlight">10</span><br>
+<span class="keyword-highlight">make</span> names[1] <span class="string-highlight">"Alice"</span><br>
+<span class="keyword-highlight">print</span> numbers[0]<br>
+<span class="keyword-highlight">print</span> names[1]</code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Arithmetic Operations</h2>
+                <p>Salt supports standard arithmetic operations with automatic type conversion.</p>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">make</span> <span class="type-highlight">int</span> result x <span class="syntax-highlight">+</span> <span class="number-highlight">5</span><br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">double</span> area width <span class="syntax-highlight">*</span> height<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">int</span> difference a <span class="syntax-highlight">-</span> b<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">double</span> ratio total <span class="syntax-highlight">/</span> count<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">int</span> remainder <span class="number-highlight">17</span> <span class="syntax-highlight">%</span> <span class="number-highlight">5</span></code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Print Statements</h2>
+                <p>The print statement can take multiple arguments, which are automatically concatenated with spaces.</p>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">print</span> <span class="string-highlight">"Hello World"</span><br>
+<span class="keyword-highlight">print</span> x<br>
+<span class="keyword-highlight">print</span> <span class="string-highlight">"The value is:"</span> x<br>
+<span class="keyword-highlight">print</span> name <span class="string-highlight">" is "</span> age <span class="string-highlight">" years old"</span></code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Control Structures</h2>
+                <h3>If Statements</h3>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">if</span> x <span class="syntax-highlight">gt</span> <span class="number-highlight">5</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> <span class="string-highlight">"x is greater than 5"</span><br>
+}<br>
+<span class="keyword-highlight">else</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> <span class="string-highlight">"x is 5 or less"</span><br>
+}</code>
+                </div>
+                
+                <h3>Loops</h3>
+                <p>Salt supports two types of loops: count-based loops and while loops.</p>
+                
+                <h4>Count-based Loops</h4>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">loop</span> <span class="number-highlight">5</span> times<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> <span class="string-highlight">"Hello"</span><br>
+}<br><br>
+<span class="keyword-highlight">loop</span> i <span class="keyword-highlight">from</span> <span class="number-highlight">1</span> <span class="keyword-highlight">to</span> <span class="number-highlight">10</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> <span class="string-highlight">"Number:"</span> i<br>
+}<br><br>
+<span class="keyword-highlight">loop</span> i <span class="keyword-highlight">from</span> <span class="number-highlight">0</span> <span class="keyword-highlight">to</span> <span class="number-highlight">100</span> <span class="keyword-highlight">by</span> <span class="number-highlight">10</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> i<br>
+}</code>
+                </div>
+                
+                <h4>While Loops</h4>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">while</span> x <span class="syntax-highlight">lt</span> <span class="number-highlight">10</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">make</span> x x <span class="syntax-highlight">+</span> <span class="number-highlight">1</span><br>
+}</code>
+                </div>
+                
+                <h3>Loop Control</h3>
+                <ul class="feature-list">
+                    <li><span class="syntax-highlight">skip</span> - Skip the current iteration and continue with the next</li>
+                    <li><span class="syntax-highlight">end</span> - Exit the current loop entirely</li>
+                </ul>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">loop</span> i <span class="keyword-highlight">from</span> <span class="number-highlight">1</span> <span class="keyword-highlight">to</span> <span class="number-highlight">10</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">if</span> i <span class="syntax-highlight">eq</span> <span class="number-highlight">5</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">skip</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> i<br>
+}</code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Functions</h2>
+                <p>Functions allow you to define reusable blocks of code with type checking.</p>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">make</span> <span class="keyword-highlight">function</span> add <span class="keyword-highlight">takes</span> <span class="type-highlight">int</span> a, <span class="type-highlight">int</span> b <span class="keyword-highlight">gives</span> <span class="type-highlight">int</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">give</span> a <span class="syntax-highlight">+</span> b<br>
+}<br><br>
+<span class="keyword-highlight">make</span> <span class="keyword-highlight">function</span> greet <span class="keyword-highlight">takes</span> <span class="type-highlight">string</span> name <span class="keyword-highlight">gives</span> <span class="type-highlight">string</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">make</span> <span class="type-highlight">string</span> message <span class="string-highlight">"Hello "</span> <span class="syntax-highlight">+</span> name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">give</span> message<br>
+}</code>
+                </div>
+                
+                <h3>Function Calls</h3>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">make</span> <span class="type-highlight">int</span> result add(<span class="number-highlight">5</span>, <span class="number-highlight">3</span>)<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">string</span> greeting greet(<span class="string-highlight">"Alice"</span>)</code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Comparison & Logical Operators</h2>
+                <h3>Comparisons</h3>
+                <ul class="feature-list">
+                    <li><span class="syntax-highlight">eq</span> - equal (==)</li>
+                    <li><span class="syntax-highlight">neq</span> - not equal (!=)</li>
+                    <li><span class="syntax-highlight">gt</span> - greater than (>)</li>
+                    <li><span class="syntax-highlight">lt</span> - less than (<)</li>
+                    <li><span class="syntax-highlight">gteq</span> - greater than or equal (>=)</li>
+                    <li><span class="syntax-highlight">lteq</span> - less than or equal (<=)</li>
+                </ul>
+                
+                <h3>Logical</h3>
+                <ul class="feature-list">
+                    <li><span class="syntax-highlight">and</span> - logical AND</li>
+                    <li><span class="syntax-highlight">or</span> - logical OR</li>
+                    <li><span class="syntax-highlight">not</span> - logical NOT</li>
+                </ul>
+                
+                <div class="code-block">
+                    <code>x <span class="syntax-highlight">gt</span> <span class="number-highlight">5</span><br>
+name <span class="syntax-highlight">eq</span> <span class="string-highlight">"Alice"</span><br>
+score <span class="syntax-highlight">lteq</span> <span class="number-highlight">100</span><br>
+x <span class="syntax-highlight">gt</span> <span class="number-highlight">5</span> <span class="syntax-highlight">and</span> y <span class="syntax-highlight">lt</span> <span class="number-highlight">10</span><br>
+flag <span class="syntax-highlight">or</span> other_flag<br>
+<span class="syntax-highlight">not</span> finished</code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Unary Operations</h2>
+                <ul class="feature-list">
+                    <li><span class="syntax-highlight">-<expression></span> - Negation (for numbers)</li>
+                </ul>
+                <div class="code-block">
+                    <code><span class="keyword-highlight">make</span> <span class="type-highlight">int</span> negative <span class="syntax-highlight">-</span><span class="number-highlight">5</span><br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">int</span> result <span class="syntax-highlight">-</span>x</code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Comments</h2>
+                <p>Use # for single-line comments. Comments are ignored by the interpreter.</p>
+                <div class="code-block">
+                    <code><span class="comment-highlight"># This is a comment</span><br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">int</span> x 5  <span class="comment-highlight"># Inline comment</span></code>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Program Structure</h2>
+                <ul class="feature-list">
+                    <li>Programs are executed line by line</li>
+                    <li>Statements can span multiple lines (especially if statements with braces)</li>
+                    <li>Empty lines are ignored</li>
+                    <li>Comments (lines starting with #) are ignored</li>
+                    <li>Functions must be defined before they can be called</li>
+                    <li>Variables must be declared before they can be assigned new values</li>
+                    <li>The new value must be compatible with the variable's original type</li>
+                </ul>
+            </div>
+
+            <div class="doc-section">
+                <h2>Error Handling</h2>
+                <p>Salt provides comprehensive error handling with descriptive messages.</p>
+                
+                <h3>Common Errors</h3>
+                <ul class="feature-list">
+                    <li>Using undefined variables</li>
+                    <li>Type mismatches in assignments</li>
+                    <li>Missing braces in if statements or loops</li>
+                    <li>Invalid syntax in expressions</li>
+                    <li>Calling undefined functions</li>
+                    <li>Incorrect number of function arguments</li>
+                    <li>Division by zero</li>
+                    <li>Modulo by zero</li>
+                </ul>
+                
+                <h3>Array-specific Errors</h3>
+                <ul class="feature-list">
+                    <li>Array index out of bounds</li>
+                    <li>Invalid array size (negative or zero)</li>
+                    <li>Using undefined arrays</li>
+                    <li>Type mismatch in array assignments</li>
+                    <li>Using non-integer array indices</li>
+                    <li>Missing array size in declaration</li>
+                    <li>Missing brackets in array access</li>
+                </ul>
+            </div>
+
+            <div class="doc-section">
+                <h2>Complete Example Program</h2>
+                <div class="code-block">
+                    <code><span class="comment-highlight"># Simple Salt program demonstrating various features</span><br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">int</span> x 10<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">int</span> y 5<br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">string</span> message "Comparison result"<br><br>
+<span class="comment-highlight"># Function definition</span><br>
+<span class="keyword-highlight">make</span> <span class="keyword-highlight">function</span> max <span class="keyword-highlight">takes</span> <span class="type-highlight">int</span> a, <span class="type-highlight">int</span> b <span class="keyword-highlight">gives</span> <span class="type-highlight">int</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">if</span> a <span class="syntax-highlight">gt</span> b<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">give</span> a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">else</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">give</span> b<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br><br>
+<span class="comment-highlight"># Loop demonstration</span><br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">int</span> i 0<br>
+<span class="keyword-highlight">loop</span> i <span class="keyword-highlight">from</span> 1 <span class="keyword-highlight">to</span> 5<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">if</span> i <span class="syntax-highlight">eq</span> 3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">skip</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> "Loop iteration:" i<br>
+}<br><br>
+<span class="comment-highlight"># Function call</span><br>
+<span class="keyword-highlight">make</span> <span class="type-highlight">int</span> maximum max(x, y)<br>
+<span class="keyword-highlight">print</span> "Maximum value is:" maximum<br><br>
+<span class="keyword-highlight">if</span> x <span class="syntax-highlight">gt</span> y<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> message ": x is greater than y"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> "Values: x =" x ", y =" y<br>
+}<br>
+<span class="keyword-highlight">else</span><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword-highlight">print</span> message ": y is greater than or equal to x"<br>
+}<br><br>
+<span class="keyword-highlight">print</span> "Program finished"</code>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <button onclick="loadCompleteExample()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                        🚀 Run in IDE
+                    </button>
+                </div>
+            </div>
+
+            <div class="doc-section">
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li>Static typing with compile-time type checking</li>
+                    <li>Array support with bounds checking</li>
+                    <li>Function definitions with parameter type checking</li>
+                    <li>Clear, readable syntax with explicit keywords</li>
+                    <li>Comprehensive error handling and debugging</li>
+                    <li>Zero-based array indexing</li>
+                    <li>Type safety and automatic type conversion</li>
+                    <li>Multiple loop types (count-based and while loops)</li>
+                    <li>Loop control statements (skip, end)</li>
+                    <li>Support for all basic data types</li>
+                    <li>Arithmetic operations with automatic type conversion</li>
+                    <li>String concatenation in print statements</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- IDE Section -->
+    <div id="ide" class="section">
+        <div class="container">
+            <div class="controls">
+                <button onclick="loadExample()">📝 Load Example</button>
+                <button onclick="clearOutput()">🗑 Clear Output</button>
+                <button onclick="runCode()" id="runBtn">▶ Run Code</button>
+            </div>
+            
+            <div class="editor-container">
+                <div class="code-editor">
+                    <textarea id="codeEditor" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+                </div>
+                
+                <div class="terminal">
+                    <div id="output"></div>
+                </div>
+            </div>
+            
+            <div class="example-code">
+                <h3>📚 Quick Examples</h3>
+                <p><strong>Variables:</strong> <code>make int x 10</code></p>
+                <p><strong>Arrays:</strong> <code>make int array numbers[5]</code></p>
+                <p><strong>Functions:</strong> <code>make function add takes int a, int b gives int { give a + b }</code></p>
+                <p><strong>Loops:</strong> <code>loop i from 0 to 4 { print i }</code></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 

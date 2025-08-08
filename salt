@@ -1,0 +1,11 @@
+#!/bin/bash
+# Salt Programming Language interpreter
+# Usage: ./salt program.salt
+
+if [ $# -eq 0 ]; then
+    echo "Usage: ./salt <filename.salt>"
+    echo "Example: ./salt example.salt"
+    exit 1
+fi
+
+python3 run_quiet.py "$1" 

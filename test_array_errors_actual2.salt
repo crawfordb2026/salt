@@ -1,0 +1,2 @@
+# Test accessing undefined array
+make undefined[0] 5 

@@ -1,0 +1,13 @@
+# Test actual error cases
+
+# Test out of bounds access
+make int array test[3]
+make test[0] 1
+make test[1] 2
+make test[2] 3
+
+# This should cause an error:
+make test[3] 4
+
+# This should cause an error:
+make test[-1] 0 
